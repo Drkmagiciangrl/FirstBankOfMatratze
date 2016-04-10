@@ -36,3 +36,16 @@ bags should never have the same number, and bag numbers must not be reused.
 Omit any mentions of "0 coins".
 Line up monetary amounts in bag listings by decimal point.
 Respond intelligently to invalid commands or inputs.
+
+Challenges
+
+Store all data entered during the program to disk.  This way, it should be
+possible to exit the program, then start it again, and still work with the
+data entered in the previous session.  There must now be an option to quit
+without "bugging out", and bugging out should remove any extant accounts 
+from disk.
+
+Support a subset of your choice of different types of currency.  It should
+be possible to get the value of the entire mattress' contents converted to
+a single currency (pick a conversion rate and hard-code it; you do not need
+to query the internet for the most current exchange rate!).
