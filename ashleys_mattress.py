@@ -137,8 +137,8 @@ class Bag:
 """
 def balance():
     global running_total
-    max_name_length = 0
-    max_value_length = 0
+    max_name_length = 10    #Bugout-Bag is 10 in length
+    max_value_length = 5    #Total is 5 in length
     bag_dict = {}
 
     #Determine the max name and value lengths for all bags for the
@@ -175,15 +175,23 @@ def balance():
 
     #Display the sorted bags with their balances and the overall total
     #    under the mattress - PEP3101
-    line = "{0:{2}} {1:>}"
+    #line = "{0:{2}} {1:>}"
+    line = "{0:<{2}}" + " {1:>{3}}"
     value_line = "${0:>.2f}"
     for i in bags:
         bag_name_str = i[0] + ":"
         value_str = value_line.format(float(i[1]))
-        fmt_line = line.format(bag_name_str, value_str, max_length)
+        
+        fmt_line = line.format(bag_name_str, value_str, max_name_length,
+                               max_length)
+        if len(i[0]) < max_name_length:
+            fmt_line = line.format(bag_name_str, value_str,
+                                   max_name_length + 1, max_length)
+            
         print(fmt_line)
     total_value_str = value_line.format(float(running_total))    
-    print(line.format("Total:", total_value_str, max_length))    
+    print(line.format("Total:", total_value_str, max_name_length+1,
+                      max_length))    
     print()
 
 """
@@ -284,7 +292,7 @@ def withdrawal():
         print(name_err)
 
 """
-    Flee!!!!!!!!! User had withdrew their "Bugout-Bag"
+    Flee!!!!!!!!! User had withdrawn their "Bugout-Bag"
 """
 def flee():
     global running_total    
